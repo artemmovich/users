@@ -1,8 +1,8 @@
 import React from 'react'
 import "./index.scss"
-export const Button = ({ text }) => {
+export const Button = ({ text, style }) => {
    return (
-      <button className="button">
+      <button className="button" style={style}>
          {text}
       </button>
    );

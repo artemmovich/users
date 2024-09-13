@@ -39,6 +39,11 @@ a, a:visited{text-decoration: none;}
 a:hover{text-decoration: none;}
 ul li{list-style: none;}
 img{vertical-align: top;}
-
+.container{
+  max-width: 1240px;
+  margin: 0 auto;
+  border: 1px solid;
+  padding: 60px 80px 80px 80px;
+}
 
 
