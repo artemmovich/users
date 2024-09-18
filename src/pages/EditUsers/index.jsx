@@ -19,6 +19,7 @@ export const EditUsers = () => {
   return (
     <section className='edit-users'>
       <div className="container">
+      <h1 className="edit-users__title">Edit User</h1>
         <div className="edit-users__form">
           <Formik
             initialValues={initialValues}

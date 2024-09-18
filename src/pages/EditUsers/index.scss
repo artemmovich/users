@@ -1,5 +1,8 @@
 .edit-users {
-   
+   &__title{
+      text-align: center;
+      padding-bottom: 80px;
+   }
    &__form {
       max-width: 500px;
       &-title {
@@ -46,15 +49,7 @@
       position: relative;
    }
 
-   .arrow {
-      margin-left: 10px;
-      font-size: 12px;
-      transition: transform 0.3s;
-   }
-
-   .arrow.open {
-      transform: rotate(180deg);
-   }
+ 
 
    .dropdown-body {
       margin-top: 5px;
