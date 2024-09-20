@@ -1,5 +1,5 @@
 .edit-users {
-   &__title{
+   &__title {
       text-align: center;
       padding-bottom: 80px;
    }
@@ -49,8 +49,6 @@
       position: relative;
    }
 
- 
-
    .dropdown-body {
       margin-top: 5px;
    }
@@ -61,6 +59,13 @@
       height: 48px;
       font-size: 16px;
       border: 1px solid #e3e8ee;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("../../assets/img/Arrows.svg");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 12px;
    }
 
    input {
@@ -71,7 +76,7 @@
       font-size: 16px;
       border: 1px solid #e3e8ee;
    }
-   &__buttons{
+   &__buttons {
       padding-top: 80px;
       display: flex;
       justify-content: flex-end;

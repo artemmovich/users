@@ -1,0 +1,78 @@
+.form-container {
+  min-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: white;
+  padding-left: 60px;
+  padding-right: 60px;
+  position: relative;
+  z-index: 1001;
+
+  &__title {
+    padding: 60px 0 20px 0;
+    font-size: 24px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: #5e626b;
+    gap: 20px;
+
+    &-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      &--bottom{
+        padding-bottom: 60px;
+      }
+    }
+  }
+
+  .form-column {
+    display: flex;
+    flex-direction: column;
+   
+    &__label {
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    &__input {
+      padding-left: 24px;
+      color: #5e626b;
+      width: 100%;
+      height: 48px;
+      font-size: 16px;
+      border: 1px solid #e3e8ee;
+      -webkit-appearance: none;
+         -moz-appearance: none;
+         appearance: none;
+         background-image: url("../../assets/img/Arrows.svg");
+         background-repeat: no-repeat;
+         background-position: right 12px center;
+         background-size: 12px;
+      &-fullname {
+        padding: 14px;
+        padding-left: 26px;
+        color: #5e626b;
+        border: 1px solid #e3e8ee;
+        font-size: 16px;
+        width: 100%;
+      }
+    }
+
+    &--half {
+      flex: 1;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-bottom: 40px;
+
+  }
+}

@@ -25,7 +25,8 @@ export const EditUsers = () => {
             initialValues={initialValues}
             onSubmit={handleSubmit}
           >
-            <Form>
+            <Form >
+            
               <div className="dropdown-body">
                 <h4 className='edit-users__form-title'>User</h4>
                 <Field

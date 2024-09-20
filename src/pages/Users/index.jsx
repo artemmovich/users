@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import './index.scss';
-import trashIcon from "../../assets/img/trashIcon.svg"
+import trashIcon from "../../assets/img/trashIcon.svg";
 import { Button } from '../../components/Button';
+import AddUserPopup from '../../components/Popup';
 
 export const Users = () => {
+  const [isAddUserOpen, setAddUserOpen] = useState(false);
+
+  const handleCloseAddUser = () => setAddUserOpen(false);
+  const handleAddUserToggle = () => setAddUserOpen(!isAddUserOpen);
+
   const initialValues = {
     department: '',
     country: '',
@@ -57,45 +63,51 @@ export const Users = () => {
                       </Field>
                     </div>
                   ))}
-                  <button type="button" className="users__clear-button" >
+                  <button type="button" className="users__clear-button">
                     <img src={trashIcon} className="users__clear-icon" />
                   </button>
                 </Form>
               )}
             </Formik>
-
           </div>
-          <Button style={{
+          <Button onClick={handleAddUserToggle} style={{
             width: '150px',
             height: '48px',
-
           }} text={"Add user"} />
         </div>
         <table className="users__table">
-            <thead>
-              <tr>
-                <th>Full Name</th>
-                <th>Department</th>
-                <th>Country</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John Doe</td>
-                <td>HR</td>
-                <td>USA</td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <td>Jane Smith</td>
-                <td>Engineering</td>
-                <td>Canada</td>
-                <td>Pending</td>
-              </tr>
-            </tbody>
-          </table>
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Department</th>
+              <th>Country</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John Doe</td>
+              <td>HR</td>
+              <td>USA</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Jane Smith</td>
+              <td>Engineering</td>
+              <td>Canada</td>
+              <td>Pending</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      {isAddUserOpen && (
+        
+        <div className="popup-overlay">
+
+          <AddUserPopup onClose={handleCloseAddUser} />
+        </div>
+      )}
     </section>
   );
 };
