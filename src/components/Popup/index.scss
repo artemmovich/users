@@ -24,7 +24,7 @@
       display: flex;
       justify-content: space-between;
       gap: 40px;
-      &--bottom{
+      &--bottom {
         padding-bottom: 60px;
       }
     }
@@ -33,7 +33,7 @@
   .form-column {
     display: flex;
     flex-direction: column;
-   
+
     &__label {
       margin-bottom: 5px;
       text-align: left;
@@ -47,22 +47,24 @@
       font-size: 16px;
       border: 1px solid #e3e8ee;
       -webkit-appearance: none;
-         -moz-appearance: none;
-         appearance: none;
-         background-image: url("../../assets/img/Arrows.svg");
-         background-repeat: no-repeat;
-         background-position: right 12px center;
-         background-size: 12px;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("../../assets/img/Arrows.svg");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px;
       &-fullname {
+        outline: none;
         padding: 14px;
         padding-left: 26px;
         color: #5e626b;
         border: 1px solid #e3e8ee;
-        font-size: 16px;
+        font-size: 15px;
         width: 100%;
+       
       }
+      
     }
-
     &--half {
       flex: 1;
     }
@@ -73,6 +75,5 @@
     justify-content: flex-end;
     gap: 10px;
     padding-bottom: 40px;
-
   }
 }

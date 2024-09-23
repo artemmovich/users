@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import './index.scss';
-import trashIcon from "../../assets/img/trashIcon.svg";
+import trashIcon from '../../assets/img/trashIcon.svg';
 import { Button } from '../../components/Button';
 import AddUserPopup from '../../components/Popup';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 export const Users = () => {
   const [isAddUserOpen, setAddUserOpen] = useState(false);
+
+
+  const users = useSelector((state) => state.users.users);
 
   const handleCloseAddUser = () => setAddUserOpen(false);
   const handleAddUserToggle = () => setAddUserOpen(!isAddUserOpen);
@@ -43,6 +48,7 @@ export const Users = () => {
     <section className='users'>
       <div className="container">
         <h1 className='users__title'>Users</h1>
+
         <div className="users__form-wrapper">
           <div className="users__form">
             <Formik
@@ -70,13 +76,16 @@ export const Users = () => {
               )}
             </Formik>
           </div>
-          <Button onClick={handleAddUserToggle} style={{
-            width: '150px',
-            height: '48px',
-          }} text={"Add user"} />
+
+          <Button
+            onClick={handleAddUserToggle}
+            style={{ width: '150px', height: '48px' }}
+            text={"Add user"}
+          />
         </div>
+
         <table className="users__table">
-          <thead>
+          <thead className='users__table-thead'>
             <tr>
               <th>Full Name</th>
               <th>Department</th>
@@ -85,26 +94,25 @@ export const Users = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>John Doe</td>
-              <td>HR</td>
-              <td>USA</td>
-              <td>Active</td>
-            </tr>
-            <tr>
-              <td>Jane Smith</td>
-              <td>Engineering</td>
-              <td>Canada</td>
-              <td>Pending</td>
-            </tr>
+            {users.map((user, index) => (
+              <tr  key={index}>
+                <td>{user.fullName}</td>
+                <td>{user.department}</td>
+                <td>{user.country}</td>
+                <td>{user.status}</td>
+                <td>
+                  <button className="users__delete-button">
+                    <img src={trashIcon} alt="Delete" className="users__delete-icon" />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
       {isAddUserOpen && (
-        
         <div className="popup-overlay">
-
           <AddUserPopup onClose={handleCloseAddUser} />
         </div>
       )}

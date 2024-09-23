@@ -4,17 +4,21 @@ import { EditUsers } from './pages/EditUsers';
 import { Users } from './pages/Users';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/edit-users" element={<EditUsers />} />
-          <Route path="/users" element={<Users />} />
-        </Routes>
-      </div>
-    </Router>
+    
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/edit-users" element={<EditUsers />} />
+            <Route path="/users" element={<Users />} />
+          </Routes>
+        </div>
+      </Router>
+    
   );
 }
 
