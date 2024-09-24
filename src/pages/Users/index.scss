@@ -54,16 +54,21 @@
    }
 
    &__table {
-      border: 1px solid #ccc;
-      width: 100%;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+            width: 100%;
       margin-top: 20px;
       border-collapse: collapse;
+      &:last-child{
+         border-bottom: 1px solid #ccc;
+      }
 
       th {
+         border-bottom: 1px solid #ccc;
+         border-top: 1px solid #ccc;
+         
          padding: 28px 36px;
          text-align: left;
-         border-bottom: 1px solid #ccc;
-
          &:nth-child(2) {
             width: 340px;
          }
@@ -72,14 +77,13 @@
       td {
          padding: 28px 36px;
          text-align: left;
-
+         
          &:nth-child(2) {
             width: 340px;
          }
       }
       tr {
          &:first-child {
-            border-top: 1px solid #ccc;
          }
       }
    }

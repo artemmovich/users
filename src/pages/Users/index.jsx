@@ -5,25 +5,25 @@ import trashIcon from '../../assets/img/trashIcon.svg';
 import { Button } from '../../components/Button';
 import AddUserPopup from '../../components/Popup';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { addUser, removeUser } from '../../store/reducers/userSlice';
 
 export const Users = () => {
   const [isAddUserOpen, setAddUserOpen] = useState(false);
-
-
   const users = useSelector((state) => state.users.users);
-
+  const dispatch = useDispatch();
   const handleCloseAddUser = () => setAddUserOpen(false);
   const handleAddUserToggle = () => setAddUserOpen(!isAddUserOpen);
 
   const initialValues = {
     department: '',
     country: '',
-    status: ''
+    status: '',
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(addUser(values));
+    resetForm();
+    handleCloseAddUser();
   };
 
   const options = {
@@ -41,7 +41,11 @@ export const Users = () => {
       { value: 'Active', label: 'Active' },
       { value: 'Inactive', label: 'Inactive' },
       { value: 'Pending', label: 'Pending' },
-    ]
+    ],
+  };
+
+  const handleRemoveUser = (index) => {
+    dispatch(removeUser(index));
   };
 
   return (
@@ -51,17 +55,14 @@ export const Users = () => {
 
         <div className="users__form-wrapper">
           <div className="users__form">
-            <Formik
-              initialValues={initialValues}
-              onSubmit={handleSubmit}
-            >
+            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
               {() => (
                 <Form className="users__form">
                   {Object.keys(options).map((key) => (
                     <div className="users__form-dropdown" key={key}>
                       <Field as="select" name={key} className="users__form-select">
                         <option value="" label={`Select ${key}`} />
-                        {options[key].map(option => (
+                        {options[key].map((option) => (
                           <option key={option.value} value={option.value}>
                             {option.label}
                           </option>
@@ -69,9 +70,6 @@ export const Users = () => {
                       </Field>
                     </div>
                   ))}
-                  <button type="button" className="users__clear-button">
-                    <img src={trashIcon} className="users__clear-icon" />
-                  </button>
                 </Form>
               )}
             </Formik>
@@ -91,17 +89,21 @@ export const Users = () => {
               <th>Department</th>
               <th>Country</th>
               <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr  key={index}>
+              <tr className='users__table' key={index}>
                 <td>{user.fullName}</td>
                 <td>{user.department}</td>
                 <td>{user.country}</td>
                 <td>{user.status}</td>
                 <td>
-                  <button className="users__delete-button">
+                  <button
+                    className="users__delete-button"
+                    onClick={() => handleRemoveUser(index)}
+                  >
                     <img src={trashIcon} alt="Delete" className="users__delete-icon" />
                   </button>
                 </td>
